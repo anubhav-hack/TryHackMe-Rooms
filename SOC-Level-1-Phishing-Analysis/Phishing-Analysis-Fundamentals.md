@@ -423,5 +423,144 @@ Email header analysis helps identify:
 
 In this case, header analysis does not indicate spoofing or malicious origin.
 
+# Task 2: The Email Address
+## Q1: Email dates back to what time frame?
+
+**Ans:** 1970s
+
+----
+
+# Task 3: Email Delivery
+
+## Q1: What port is classified as Secure Transport for SMTP?
+
+**Ans:** 465
+
+---
+
+## Q2: What port is classified as Secure Transport for IMAP?
+
+**Ans:** 993
+
+---
+
+## Q3: What port is classified as Secure Transport for POP3?
+
+**Ans:** 995
+
+---
+
+# Task 4: Email Headers
+
+## Q1: What email header is the same as “Reply-to”?
+
+**Ans:** Return-Path
+
+---
+
+## Q2: Once you find the email sender’s IP address, where can you retrieve more information about the IP?
+
+**Ans:** http://www.arin.net/
+
+---
+
+# Task 5: Email Body
+
+
+
+
+
+## Q1: In the above screenshots, what is the URI of the blocked image?
+
+![ Email Body](screenshots/PAF5.png)
+
+**Ans:** https://i.imgur.com/lsw0tdi.png
+
+---
+
+## Q2: In the above screenshots, what is the name of the PDF attachment?
+
+![ Email Body](screenshots/PAF6.png)
+
+**Ans:** Payment-updateid.pdf
+
+---
+
+## Q3 In the attached virtual machine, view the information in email2.txt and reconstruct the PDF using the base64 data. What is the text within the PDF?
+
+![ Email Body](screenshots/PAF7.png)
+
+![ Email Body](screenshots/PAF8.png)
+
+cat email2.txt: Reads the content of the email2.txt file.
+
+| base64 -d: Decodes the Base64-encoded content of email2.txt.
+
+email.txt > email.pdf: The decoded content is saved as a file named email.pdf.
+
+Go Back to the Email Samples Folder and open email.pdf
+
+![ Email Body](screenshots/PAF9.png)
+
+We can see the flag
+
+Answer: THM{BENIGN_PDF_ATTACHMENT}
+
+# Task 6 Types of Phishing
+
+![ Email Body](screenshots/PAF3.png)
+
+![ Email Body](screenshots/PAF4.png)
+
+### Q6.1 What trusted entity is this email masquerading as?
+
+![ Email Body](screenshots/PAF10.png)
+
+From: =**?UTF-8?B?** VGhhbmsgeW91ISBIb21lIERlcG90?= <support@teckbe.com>
+
+The part between =?UTF-8?B? and ?= is the Base64 encoded text
+
+VGhhbmsgeW91ISBIb21lIERlcG90
+
+Using CyberChef to encode from Base64
+
+![ Email Body](screenshots/PAF11.png)
+
+**Answer**: Home Depot
+
+### Q 6.2 What is the sender’s email?
+
+Return-Path: <support@teckbe.com>
+
+**Answer**: support@teckbe.com
+
+### Q 6.3 What is the subject line?
+
+Subject: =?UTF-8?B?T3JkZXIgUGxhY2VkIDogWW91ciBPcmRlciBJRCBPRDIzMjE2NTcwODkyOTEgUGxhY2VkIFN1Y2Nlc3NmdWxseQ==?=
+
+=?UTF-8?B?…?=:
+
+UTF-8 indicates the encoding format.
+
+B (Base64) indicates the text is Base64 encoded.
+
+Answer: Order Placed: Your Order ID OD2321657089291 Placed Successfully
+
+### Q 6.4 What is the URL link for — CLICK HERE? (Enter the defanged URL) (Question Hint There are repeat characters that you can remove from the URL. CyberChef can help you with this, along with defanging)
+
+![ Email Body](screenshots/PAF12.png)
+
+ URLs can contain repeated or extra characters added by encoding processes (== at the end or unnecessary line breaks)  **Remove it** 
+
+Suspicious Link Analysis
+
+The following URI was found in the email content:
+[ link](http://t.teckbe.com/p/?j3=EOowFcEwFHl6EOAyFcoUFVTVEchwFHlUFOo6lVTTDcATE7oUE7AUET==)
+
+![Email Body](screenshots/PAF13.png)
+
+**Answer**: hxxp[://]t[.]teckbe[.]com/p/?j3=EOowFcEwFHl6EOAyFcoUFVTVEchwFHlUFOo6lVTTDcATE7oUE7AUET
+
+
 
 
