@@ -1,6 +1,3 @@
-<div align="center">
-
 # Phishing Emails in Action 
 
-</div>
 
