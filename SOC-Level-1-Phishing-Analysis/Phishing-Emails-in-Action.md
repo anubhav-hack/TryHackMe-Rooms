@@ -91,6 +91,7 @@ Additional notes:
 
 ## Task 4: Select your email provider to view document
 
+<<<<<<< HEAD
 - Techniques used in the email:
     -  Creates a sense of urgency (e.g., “link expires today”)
     -   HTML impersonation of legitimate brands (OneDrive, Adobe)
@@ -104,6 +105,21 @@ Additional notes:
     -  Victims are prompted to log in with their email credentials; credentials are sent to the attacker.
     -  Even correct credentials would trigger a fake error message, ensuring the attacker still collects them.
     -  Multiple grammatical errors reveal the email is suspicious.
+=======
+    Techniques used in the email:
+        Creates a sense of urgency (e.g., “link expires today”)
+        HTML impersonation of legitimate brands (OneDrive, Adobe)
+        Link manipulation to redirect victims to fake pages
+        Credential harvesting by asking users to log in
+        Poor grammar and typos
+    Red flags and observations:
+        Email prompts immediate action with a “download the fax” button.
+        Links redirect to non-Microsoft and non-Adobe URLs despite appearing legitimate.
+        Page titles and branding are faked (e.g., “Share Point Online”) to appear trustworthy.
+        Victims are prompted to log in with their email credentials; credentials are sent to the attacker.
+        Even correct credentials would trigger a fake error message, ensuring the attacker still collects them.
+        Multiple grammatical errors reveal the email is suspicious.
+>>>>>>> 30d5d31012cdb8d6a67b20aeca57d42f0158f956
 
 
 **Question No 3:** This email sample used the names of a few major companies, their products, and logos such as OneDrive and Adobe. What other company name was used in this phishing email?
@@ -118,6 +134,7 @@ Additional notes:
 
 In this task we look at yet another email. Here are the main points:
 
+<<<<<<< HEAD
 - Techniques used: Spoofed email address, urgency, HTML impersonation of Netflix, poor grammar/typos, attachments.
 -  Sender spoofing: Appears to be from Netflix Billing, but the actual sender is z99@musacombi.online.
 -  Urgency: Claims the account is suspended, pressuring the victim to act quickly; reinforced throughout the email body.
@@ -125,6 +142,15 @@ In this task we look at yet another email. Here are the main points:
 -   Attachment: A PDF is included, prompting the victim to “Update Payment Account.”
 -  Suspicious details: The phone number listed is unusual for a US-based Netflix account.
   -  Overall: The email uses urgency, brand impersonation, and a malicious attachment to trick the recipient into interacting and potentially revealing sensitive information.
+=======
+    Techniques used: Spoofed email address, urgency, HTML impersonation of Netflix, poor grammar/typos, attachments.
+    Sender spoofing: Appears to be from Netflix Billing, but the actual sender is z99@musacombi.online.
+    Urgency: Claims the account is suspended, pressuring the victim to act quickly; reinforced throughout the email body.
+    Typos: Netflix is misspelled multiple times, though not as part of typosquatting.
+    Attachment: A PDF is included, prompting the victim to “Update Payment Account.”
+    Suspicious details: The phone number listed is unusual for a US-based Netflix account.
+    Overall: The email uses urgency, brand impersonation, and a malicious attachment to trick the recipient into interacting and potentially revealing sensitive information.
+>>>>>>> 30d5d31012cdb8d6a67b20aeca57d42f0158f956
 
 **Question No 4:** What should users do if they receive a suspicious email or text message claiming to be from Netflix?
 
