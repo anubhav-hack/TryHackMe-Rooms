@@ -253,4 +253,3 @@ While analyzing traffic, we observe:
 ---
 
 **Q3** Look at the HTTP example: what is the size of the ZIP attachment included in the HTTP response?
-
