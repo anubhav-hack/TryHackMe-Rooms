@@ -158,7 +158,7 @@ Proper monitoring of DNS logs, traffic patterns, and periodic connections helps 
 
 **Q1** What is the name of the technique used to smuggle C2 commands via DNS?
 
-![Network Traffic Basics](screenshots/NTB1.png)
+![Network Traffic Basics](screenshot2/NTB1.png)
 
 Answer: DNS tunneling
 
@@ -252,4 +252,154 @@ While analyzing traffic, we observe:
 
 ---
 
-**Q3** Look at the HTTP example: what is the size of the ZIP attachment included in the HTTP response?
+**Q2** Look at the HTTP example: what is the size of the ZIP attachment included in the HTTP response?
+
+![Network Traffic Basics](screenshot2/NTB2.png)
+
+Answer: 10485760 bytes
+
+**Q3** Which attack do attackers use to try to evade an IDS?
+
+Answer : fragmentation
+
+**Q4** What field in the TCP header can we use to detect session hijacking?
+
+![Network Traffic Basics](screenshot2/NTB3.png)
+
+ Answer: sequence number
+
+ ---
+
+## Task 4 — Network Traffic Sources and Flows
+
+##  Network Traffic Sources
+
+Network traffic originates from various devices and services within and outside an organization.
+
+## 1️ End-User Devices
+- Laptops
+- Desktops
+- Mobile devices
+- Tablets
+
+These generate traffic through:
+- Web browsing
+- Email communication
+- File downloads/uploads
+- Remote access sessions
+
+---
+
+## 2️ Servers
+- Web servers
+- Application servers
+- Database servers
+- Mail servers
+
+Servers handle:
+- Client requests
+- Data storage and retrieval
+- API communication
+- Authentication services
+
+---
+
+## 3️ Network Infrastructure Devices
+- Routers
+- Switches
+- Firewalls
+- Load balancers
+
+These devices generate:
+- Routing updates
+- ARP traffic
+- ICMP messages
+- Log and monitoring data
+
+---
+
+## 4️ Cloud Services
+- SaaS applications
+- Cloud storage
+- Virtual machines
+- CDN services
+
+Cloud sources may generate:
+- API calls
+- Sync traffic
+- Authentication requests
+- External service communication
+
+---
+
+## 5️ External Internet Sources
+- Public websites
+- Third-party APIs
+- Threat actors
+- Unknown external IP addresses
+
+These can include:
+- Normal inbound requests
+- Malicious scanning
+- Brute-force attempts
+- Command-and-Control (C2) communication
+
+---
+
+## Flow Examples
+
+Let's have a visual look at some of the network flows mentioned above.
+
+### HTTPS
+
+There are different variations of HTTPS network traffic flows. Let's examine a flow where the web proxy does TLS inspection:
+A host requests a website; this request is sent to the NGFW, which includes a web proxy. The web proxy will act as the web server and simultaneously establish a new TCP session with the actual web server and forward the clients' requests. When the web proxy receives the answer from the web server, it inspects its contents and then forwards it to the host if deemed safe. To summarize, we have two sessions, one between the client and the proxy and the other between the proxy and the web server. From the client's point of view, it has established a session with the web server.
+
+![Network Traffic Basics](screenshot2/NTB4.png)
+
+### External DNS
+DNS traffic within a corporate network starts when a host sends a DNS query. The host sends the query to the internal DNS server on port 53, which will then act on behalf of the host. First, it will check if it has an answer to the query in its cache; if not, it will send the query via the router, through the firewall, to the configured DNS servers. The answer will then follow the same path to the internal DNS server, which will then forward it to the host. The network diagram below shows a simplified flow.
+
+![Network Traffic Basics](screenshot2/NTB5.png)
+
+### SMB with Kerberos
+
+When a host opens a share to, for example, \\FILESERVER\MARKETING, an SMB session is set up. First, authentication is done via Kerberos. When a user logged in on the host, it authenticated with the Key Distribution Center on the Domain Controller and received a Ticket Granting Ticket to request "service authentication tickets". Now, the host requests a service ticket using the Ticket Granting Ticket it received earlier. The host then uses this ticket to establish the SMB connection. Once the SMB session is set up, the host can access the share. Below we see a simplified network diagram of the flow.
+
+![Network Traffic Basics](screenshot2/NTB6.png)
+
+**Q5** Which category of devices generates the most traffic in a network?
+
+Answer: endpoint devices
+
+**Q6** Before an SMB session can be established, which service needs to be contacted first for authentication?
+
+![Network Traffic Basics](screenshot2/NTB6.png)
+
+ Answer: Kerberos
+
+ **Q7** What does TLS stand for?
+
+ Answer: Transport Layer Security
+
+ ---
+
+ ## Task 5 — How can we observe network traffic?
+
+**Q8** What is the flag found in the HTTP traffic in scenario 1?
+
+How it was found (step-by-step)
+
+- Open the static lab page and click Start.
+- Drag the topology file onto the diagram and locate the WP1 device (or follow the lab instructions to start the simulated capture).
+
+![Network Traffic Basics](screenshot2/NTB7.png)
+
+Click through the packet table pages (paging button) until the last page. On the last page, last row shows the HTTP GET for 200 OK (application/zip) with a size of 10485760.
+
+![Network Traffic Basics](screenshot2/NTB8.png)
+
+- Expand that row and view the Body Preview the captured HTTP response body contains the flag:
+
+Answer:  THM{FoundTheMalware}
+
